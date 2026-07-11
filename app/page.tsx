@@ -154,7 +154,7 @@ export default function Home() {
                 onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.04)")}
                 onMouseLeave={e => (e.currentTarget.style.background = "rgba(255,255,255,0.01)")}
               >
-                <span style={{ display: "inline-block", fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--primary)", background: "rgba(249,96,31,0.1)", border: "1px solid rgba(249,96,31,0.2)", padding: "3px 10px", borderRadius: 99 }}>
+                <span style={{ display: "inline-flex", width: "fit-content", fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--primary)", background: "rgba(249,96,31,0.1)", border: "1px solid rgba(249,96,31,0.2)", padding: "3px 10px", borderRadius: 99, alignSelf: "flex-start" }}>
                   {f.label}
                 </span>
                 <div>

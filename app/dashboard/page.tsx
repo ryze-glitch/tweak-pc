@@ -4,37 +4,36 @@ import type { Metadata } from "next";
 import DiscordButton from "./DiscordButton";
 
 export const metadata: Metadata = {
-  title: "NexTune - Dashboard",
-  description: "Accedi alla dashboard NexTune per gestire le tue ottimizzazioni.",
+  title: "NexTune — Dashboard",
+  description: "Accedi alla dashboard NexTune.",
 };
 
 export default function Dashboard() {
   return (
-    <div className="relative flex min-h-screen items-center justify-center overflow-hidden px-4" style={{ background: "var(--background)" }}>
-      <div aria-hidden="true" className="pointer-events-none fixed -top-64 -right-64 z-[9990] h-[600px] w-[600px] rounded-full blur-[160px] mix-blend-screen" style={{ background: "color-mix(in oklab, var(--primary) 5%, transparent)", animation: "orb-a 18s ease-in-out infinite" }} />
-      <div aria-hidden="true" className="pointer-events-none fixed -bottom-64 -left-32 z-[9990] h-[500px] w-[500px] rounded-full blur-[150px] mix-blend-screen" style={{ background: "color-mix(in oklab, var(--primary) 4%, transparent)", animation: "orb-b 22s ease-in-out infinite" }} />
-      <div aria-hidden="true" className="grain-overlay" />
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 grid-bg" style={{ maskImage: "radial-gradient(ellipse at center, black 0%, transparent 60%)", WebkitMaskImage: "radial-gradient(ellipse at center, black 0%, transparent 60%)" }} />
-      <div aria-hidden="true" className="pointer-events-none absolute -z-10 h-[520px] w-[520px] rounded-full blur-[100px]" style={{ left: "50%", top: "33%", transform: "translate(-50%, -50%)", background: "color-mix(in oklab, var(--primary) 15%, transparent)" }} />
+    <div style={{ background: "var(--background)", color: "var(--foreground)", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: 24, position: "relative", overflow: "hidden" }}>
+      <div style={{ position: "fixed", top: -200, right: -200, width: 600, height: 600, background: "rgba(249,96,31,0.06)", filter: "blur(120px)", borderRadius: "50%", pointerEvents: "none" }} />
+      <div style={{ position: "fixed", bottom: -200, left: -150, width: 500, height: 500, background: "rgba(249,96,31,0.05)", filter: "blur(100px)", borderRadius: "50%", pointerEvents: "none" }} />
 
-      <div className="relative z-10 w-full max-w-sm">
-        <Link href="/" className="mb-8 flex items-center justify-center gap-2.5">
-          <Image src="/logo.png" alt="NexTune" width={40} height={40} className="rounded-lg" />
-          <span className="text-xl font-semibold tracking-tight" style={{ fontFamily: "var(--font-outfit)" }}>
+      <div style={{ width: "100%", maxWidth: 380, position: "relative", zIndex: 1 }}>
+        <Link href="/" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, textDecoration: "none", marginBottom: 32 }}>
+          <Image src="/logo.png" alt="NexTune" width={36} height={36} style={{ borderRadius: 9 }} />
+          <span className="font-display" style={{ fontSize: 20, fontWeight: 700, color: "var(--foreground)", letterSpacing: "-0.02em" }}>
             Nex<span style={{ color: "var(--primary)" }}>Tune</span>
           </span>
         </Link>
-        <div className="overflow-hidden rounded-2xl backdrop-blur-sm" style={{ border: "1px solid color-mix(in oklab, var(--border) 60%, transparent)", background: "color-mix(in oklab, var(--card) 50%, transparent)" }}>
-          <div className="px-7 pt-7 pb-2">
-            <h1 className="text-[22px] font-semibold tracking-tight" style={{ fontFamily: "var(--font-outfit)" }}>Accedi alla dashboard</h1>
-            <p className="mt-1.5 text-sm leading-relaxed" style={{ color: "var(--muted-foreground)" }}>Gestisci i tuoi profili di ottimizzazione con il tuo account Discord.</p>
+
+        <div className="liquid-glass" style={{ borderRadius: 20, overflow: "hidden" }}>
+          <div style={{ padding: "28px 28px 16px", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+            <h1 className="font-display" style={{ fontSize: 20, fontWeight: 600, letterSpacing: "-0.02em", marginBottom: 6 }}>Accedi alla dashboard</h1>
+            <p style={{ fontSize: 13, color: "rgba(245,241,236,0.55)", lineHeight: 1.5 }}>Gestisci i tuoi profili di ottimizzazione con il tuo account Discord.</p>
           </div>
-          <div className="px-7 pt-5 pb-7">
+          <div style={{ padding: "20px 28px 28px" }}>
             <DiscordButton />
           </div>
         </div>
-        <div className="mt-5 text-center">
-          <Link href="/" className="text-sm transition-colors hover:text-white" style={{ color: "var(--muted-foreground)" }}>Torna alla home</Link>
+
+        <div style={{ marginTop: 20, textAlign: "center" }}>
+          <Link href="/" style={{ fontSize: 13, color: "rgba(245,241,236,0.4)", textDecoration: "none", transition: "color .15s" }}>← Torna alla home</Link>
         </div>
       </div>
     </div>

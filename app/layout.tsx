@@ -11,10 +11,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="it">
       <head>
-        <meta name="theme-color" content="#000000"/>
-        <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous"/>
-        <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+        <meta name="theme-color" content="#050109"/>
+        <link rel="preconnect" href="https://api.fontshare.com"/>
+        <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet"/>
       </head>
       <body suppressHydrationWarning>{children}</body>
     </html>

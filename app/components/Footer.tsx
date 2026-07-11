@@ -5,59 +5,49 @@ const discordPath = "M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border/60 py-14" style={{ borderColor: "color-mix(in oklab, var(--border) 60%, transparent)" }}>
-      <div className="container-page">
-        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+    <footer style={{ borderTop: "1px solid rgba(255,255,255,0.06)", padding: "56px 0 32px" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 32px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr 1fr", gap: 40, marginBottom: 48 }}>
           <div>
-            <Link href="/" className="flex items-center gap-2">
-              <Image src="/logo.png" alt="NexTune" width={36} height={36} className="rounded-md" />
-              <span className="text-lg font-semibold tracking-tight" style={{ fontFamily: "var(--font-outfit)" }}>
+            <Link href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none", marginBottom: 16 }}>
+              <Image src="/logo.png" alt="NexTune" width={30} height={30} style={{ borderRadius: 7 }} />
+              <span className="font-display" style={{ fontSize: 15, fontWeight: 600, color: "var(--foreground)", letterSpacing: "-0.02em" }}>
                 Nex<span style={{ color: "var(--primary)" }}>Tune</span>
               </span>
             </Link>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed" style={{ color: "var(--muted-foreground)" }}>
-              Il sistema di ottimizzazione per Windows. Veloce, leggero, senza bloat.
+            <p style={{ fontSize: 13, color: "rgba(245,241,236,0.5)", lineHeight: 1.7, maxWidth: 260 }}>
+              Sistema di ottimizzazione per Windows. Veloce, leggero, senza bloat.
             </p>
           </div>
-          <div>
-            <p className="text-xs font-medium uppercase tracking-[0.16em]" style={{ color: "var(--muted-foreground)" }}>Prodotto</p>
-            <ul className="mt-4 space-y-2">
-              {[{ label: "Funzionalità", href: "/#features" }, { label: "Come funziona", href: "/#how" }, { label: "Scarica", href: "/#download" }].map(l => (
-                <li key={l.label}><Link href={l.href} className="text-sm transition-colors hover:text-foreground" style={{ color: "var(--muted-foreground)" }}>{l.label}</Link></li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <p className="text-xs font-medium uppercase tracking-[0.16em]" style={{ color: "var(--muted-foreground)" }}>Progetto</p>
-            <ul className="mt-4 space-y-2">
-              {[{ label: "Chi siamo", href: "/chi-siamo" }, { label: "Termini di Servizio", href: "/tos" }, { label: "Dashboard", href: "/dashboard" }].map(l => (
-                <li key={l.label}><Link href={l.href} className="text-sm transition-colors hover:text-foreground" style={{ color: "var(--muted-foreground)" }}>{l.label}</Link></li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <p className="text-xs font-medium uppercase tracking-[0.16em]" style={{ color: "var(--muted-foreground)" }}>Contatti</p>
-            <ul className="mt-4 space-y-2">
-              <li>
-                <a href="https://discord.gg/nextune" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm transition-colors hover:text-foreground" style={{ color: "var(--muted-foreground)" }}>
-                  <svg className="size-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d={discordPath} /></svg>
-                  Discord
-                </a>
-              </li>
-            </ul>
-          </div>
+          {[
+            { title: "Prodotto", items: [{ l: "Funzionalità", h: "#features" }, { l: "Come funziona", h: "#how" }, { l: "Scarica", h: "#download" }] },
+            { title: "Progetto", items: [{ l: "Chi siamo", h: "/chi-siamo" }, { l: "Termini", h: "/tos" }, { l: "Dashboard", h: "/dashboard" }] },
+            { title: "Contatti", items: [{ l: "Discord", h: "https://discord.gg/nextune" }] },
+          ].map(col => (
+            <div key={col.title}>
+              <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(245,241,236,0.35)", marginBottom: 16 }}>{col.title}</p>
+              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 10 }}>
+                {col.items.map(it => (
+                  <li key={it.l}>
+                    <Link href={it.h} style={{ fontSize: 13, color: "rgba(245,241,236,0.55)", textDecoration: "none", transition: "color .15s" }}
+                      onMouseEnter={e => (e.currentTarget.style.color = "var(--foreground)")}
+                      onMouseLeave={e => (e.currentTarget.style.color = "rgba(245,241,236,0.55)")}
+                    >{it.l}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-        <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t pt-6 text-xs sm:flex-row sm:items-center" style={{ borderColor: "color-mix(in oklab, var(--border) 60%, transparent)", color: "var(--muted-foreground)" }}>
-          <p className="flex flex-wrap items-center gap-2.5">
-            <span>© 2026 NexTune</span>
-          </p>
-          <nav className="flex items-center gap-5">
-            <Link href="/tos" className="transition-colors hover:text-white">Termini di Servizio</Link>
-            <a href="https://discord.gg/nextune" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 transition-colors hover:text-white">
-              <svg className="size-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d={discordPath} /></svg>
+        <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: 24, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <p style={{ fontSize: 12, color: "rgba(245,241,236,0.35)" }}>© 2026 NexTune</p>
+          <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+            <Link href="/tos" style={{ fontSize: 12, color: "rgba(245,241,236,0.35)", textDecoration: "none" }}>Termini di Servizio</Link>
+            <a href="https://discord.gg/nextune" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "rgba(245,241,236,0.35)", textDecoration: "none" }}>
+              <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 13, height: 13 }}><path d={discordPath}/></svg>
               Discord
             </a>
-          </nav>
+          </div>
         </div>
       </div>
     </footer>
